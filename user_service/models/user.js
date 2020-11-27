@@ -8,7 +8,7 @@ const crypto = require('crypto')
 const userScheme = new mongoose.Schema({
     email :{
         type:String,
-        required: true,
+        required: [true,'provide email.. email must'],
         unique: true,
         trim: true,
         lowercase: true,
@@ -22,7 +22,7 @@ const userScheme = new mongoose.Schema({
         type:String,
         trim:true,
         minlength: 8,
-        required:true,
+        required:[true, 'please provide password min 8 char']
         
     },
     role:{

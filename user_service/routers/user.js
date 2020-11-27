@@ -12,7 +12,7 @@ const {
     recover,
     resetPassword,
     removeDevice,
-    resendEmail,
+    //resendEmail,
     //changePassword,
     detailsUpdate
 } = require('../controllers/user')
@@ -25,7 +25,7 @@ router.post('/login',login)
 router.post('/recover', recover)
 router.post('/passwordReset/:token',resetPassword)
 router.get('/confirmEmail/:id',conformEmail)
-router.post('/resendEmail',resendEmail)
+//router.post('/resendEmail',resendEmail)
 router.get('/QRcode',auth,qrcode)
 router.post('/login/verify',auth, verify2fa)
 router.post('/logout', auth, logout)

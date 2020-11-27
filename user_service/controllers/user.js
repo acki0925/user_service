@@ -16,13 +16,13 @@ exports.register = asyncHandler(async(req,res)=>{
     //console.log(secret)
     user.secret2FA = secret.base32
     await user.save()
-    sendMail(user.email,user._id)
+    //sendMail(user.email,user._id)
     //const token = await user.generateAuthToken()
     res.status(201).send({user:user,data:'successfully register .please verify your accout'})
     
 })
 
-exports.resendEmail = asyncHandler(async(req,res)=>{
+/*exports.resendEmail = asyncHandler(async(req,res)=>{
     const user = await User.findOne({email: req.email})
     if(!user){
         return next(new ErrorResponse(`invalid email`,401))
@@ -32,7 +32,7 @@ exports.resendEmail = asyncHandler(async(req,res)=>{
         return res.status(200).send({message:"email send"})
     }
     res.status(200).send("email already sended")
-})
+})*/
 
 exports.login =asyncHandler(async(req,res,next)=>{
     const user = await User.findByCredentials(req.body.email,req.body.password)
