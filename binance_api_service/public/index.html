@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Trades</h1>
+    <div id="trades"></div>
+    <script>
+        var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+        var tradeDiv = document.getElementById("trades");
+
+        binanceSocket.onmessage = function (event) {
+            console.log(event.data);
+            var messageObj = JSON.parse(event.data);
+            tradeDiv.append(messageObj.p)
+        }
+    </script>
+</body>
+</html>
